@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Hai Cấp</title>
+    <style>
+        /* Định dạng menu chính */
+        .menu_theloai {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            font-weight: bold;
+            border-bottom: 1px solid #555;
+        }
+
+        /* Ẩn menu con mặc định */
+        .menu_nhom {
+            display: none;
+            background-color: #444;
+        }
+
+        /* Hiển thị menu con khi hover vào menu chính */
+        .menu_theloai:hover + .menu_nhom {
+            display: block;
+        }
+
+        /* Định dạng mục trong menu con */
+        .menu_nhom a {
+            display: block;
+            padding: 10px;
+            color: white;
+            text-decoration: none;
+            border-bottom: 1px solid #555;
+        }
+
+        /* Hiệu ứng khi di chuột qua các mục con */
+        .menu_nhom a:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <!-- Menu cấp 1: Đời sống -->
+    <div class="menu_theloai">Đời sống</div>
+    <div class="menu_nhom">
+        <a href="?idTL=15">Hoa hậu</a>
+        <a href="?idTL=16">Nghệ sĩ</a>
+        <a href="?idTL=17">Mỹ thuật</a>
+    </div>
+
+    <!-- Menu cấp 1: Giải trí -->
+    <div class="menu_theloai">Giải trí</div>
+    <div class="menu_nhom">
+        <a href="?idTL=18">Âm nhạc</a>
+        <a href="?idTL=19">Thời trang</a>
+        <a href="?idTL=20">Điện ảnh</a>
+    </div>
+
+    <!-- Menu cấp 1: Thể thao -->
+    <div class="menu_theloai">Thể thao</div>
+    <div class="menu_nhom">
+        <a href="?idTL=21">Bóng đá</a>
+        <a href="?idTL=22">Tennis</a>
+        <a href="?idTL=23">Các môn khác</a>
+    </div>
+</body>
+</html>

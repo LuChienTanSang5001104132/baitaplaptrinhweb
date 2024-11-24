@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Tiết Sản Phẩm</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .header-bar {
+            background-color: #f8f9fa;
+            padding: 10px 0;
+            font-size: 18px;
+            font-weight: bold;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .header-bar div {
+            text-align: left; /* Căn lề trái */
+            padding-left: 20px; /* Khoảng cách với lề trái */
+        }
+
+        .navbar-custom {
+            background-color: #ffffff;
+        }
+
+        .menu-item {
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            margin: 0 5px;
+            padding: 5px 15px;
+            text-align: center;
+            background-color: #f8f9fa;
+            transition: all 0.3s ease;
+        }
+
+        .menu-item:hover {
+            background-color: #e2e6ea;
+            color: #000;
+            text-decoration: none;
+        }
+
+        .product-img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .product-detail {
+            margin-top: 20px;
+        }
+
+        .cart-sidebar {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+        }
+
+        .share-icons img {
+            width: 40px;
+            height: 40px;
+            margin: 5px;
+            border-radius: 5px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <!-- Thanh tiêu đề -->
+    <div class="header-bar">
+        <div>
+            <h1><b>FIT-HCMUE Shop</b></h1>
+            Bring knowledge to everyone
+        </div>
+    </div>
+
+    <!-- Thanh điều hướng -->
+    <nav class="row navbar navbar-expand-lg navbar-custom">
+        <div class="col-12 d-flex justify-content-center py-2">
+            <a class="nav-link text-dark menu-item" href="#">Trang chủ</a>
+            <a class="nav-link text-dark menu-item" href="#">Giới thiệu</a>
+            <a class="nav-link text-dark menu-item" href="#">Sản phẩm</a>
+            <a class="nav-link text-dark menu-item" href="#">Liên hệ</a>
+            <a class="nav-link text-dark menu-item" href="#">Hỗ trợ</a>
+            <a class="nav-link text-dark menu-item" href="#">Tài khoản</a>
+        </div>
+    </nav>
+
+    <!-- Nội dung chi tiết -->
+    <div class="container">
+        <div class="row hh-sheet product-detail">
+            <article class="col-sm-9">
+                <div class="hh-body">
+                    <h2>iPhone 14 Pro MAX - 256GB</h2>
+                    <img src="screeniphone14.jpg" alt="iPhone 14 Pro MAX" class="product-img">
+                    <p><strong>Giá: </strong>29,999,000 đ</p>
+                    <button class="btn btn-primary">Thêm vào giỏ</button>
+                    <button class="btn btn-outline-secondary">Yêu thích</button>
+                    <div class="mt-3">
+                        <h4>Thông tin sản phẩm</h4>
+                        <ul>
+                            <li>Màn hình: 6.7 inches, 2796 x 1290-pixel</li>
+                            <li>Hệ điều hành: iOS 16</li>
+                            <li>Công nghệ màn hình: Super Retina XDR OLED</li>
+                            <li>Camera chính: 48 MP, f/1.8</li>
+                            <li>Camera góc siêu rộng: 12 MP, f/2.2</li>
+                            <li>RAM: 6 GB, bộ nhớ: 256 GB</li>
+                            <li>Pin: 4323 mAh</li>
+                        </ul>
+                        <p>Chia sẻ sản phẩm:</p>
+                        <div class="share-icons">
+                            <img src="logofacebook2.png" alt="Facebook Icon">
+                            <img src="logotwitter.jpg" alt="Twitter Icon">
+                            <img src="logoemail.png" alt="Email Icon">
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <aside class="col-sm-3 cart-sidebar">
+                <h5>Giỏ hàng</h5>
+                <p>19 sản phẩm</p>
+                <p>Tổng cộng: 5,000,000 đ</p>
+                <h5>Tìm kiếm</h5>
+                <input type="text" class="form-control mb-3" placeholder="Keywords">
+                <h5>Chủng loại</h5>
+                <ul>
+                    <li>Điện thoại</li>
+                    <li>Laptop</li>
+                    <li>Tablet</li>
+                    <li>Điều hòa</li>
+                    <li>Tủ lạnh</li>
+                </ul>
+            </aside>
+        </div>
+        <footer class="row card mt-4">
+            <p class="text-center p-3">© 2024 FIT-HCMUE Shop. By: LuChienTanSang</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

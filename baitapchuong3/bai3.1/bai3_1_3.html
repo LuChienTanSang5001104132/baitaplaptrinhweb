@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Đổi Năm Dương Lịch Sang Năm Âm Lịch</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+
+    input {
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      color: white;
+      background-color: #007bff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>Đổi Năm Dương Lịch Sang Năm Âm Lịch</h1>
+  <p>Nhập năm dương lịch:</p>
+  <input type="number" id="year" placeholder="Nhập năm dương lịch" />
+  <button onclick="convertYear()">Chuyển đổi</button>
+  <div id="result"></div>
+
+  <script>
+    function convertYear() {
+      const year = parseInt(document.getElementById('year').value);
+      const resultDiv = document.getElementById('result');
+
+      // Kiểm tra giá trị hợp lệ
+      if (!year || year <= 0) {
+        resultDiv.innerText = 'Vui lòng nhập một năm hợp lệ!';
+        resultDiv.style.color = 'red';
+        return;
+      }
+
+      // Bảng Can và Chi
+      const canList = ['Canh', 'Tân', 'Nhâm', 'Quý', 'Giáp', 'Ất', 'Bính', 'Đinh', 'Mậu', 'Kỷ'];
+      const chiList = ['Thân', 'Dậu', 'Tuất', 'Hợi', 'Tý', 'Sửu', 'Dần', 'Mão', 'Thìn', 'Tỵ', 'Ngọ', 'Mùi'];
+
+      // Tìm Can và Chi
+      const can = canList[year % 10];
+      const chi = chiList[year % 12];
+
+      // Hiển thị kết quả
+      resultDiv.innerText = `Năm ${year} là năm âm lịch: ${can} ${chi}`;
+      resultDiv.style.color = 'blue';
+    }
+  </script>
+</body>
+</html>

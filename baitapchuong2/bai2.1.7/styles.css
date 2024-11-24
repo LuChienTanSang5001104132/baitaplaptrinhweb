@@ -1,0 +1,28 @@
+/* Định dạng chung cho các khối */
+.left, .right, .center {
+    width: 120px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    padding: 10px;
+    background: CornflowerBlue;
+    border-radius: 5px;
+    text-shadow: 0px 0px 5px white;
+}
+
+/* Định dạng cho khối float:left */
+.left {
+    float: left;
+    margin-right: 10px;
+}
+
+/* Định dạng cho khối float:right */
+.right {
+    float: right;
+    margin-left: 10px;
+}
+
+/* Định dạng cho khối không float */
+.center {
+    margin: 0 auto;
+}

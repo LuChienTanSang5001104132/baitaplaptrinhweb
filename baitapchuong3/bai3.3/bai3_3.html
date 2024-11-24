@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý sản phẩm</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        input {
+            padding: 10px;
+            margin: 10px 0;
+            width: calc(100% - 22px);
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px 5px;
+            font-size: 14px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .add-btn {
+            background-color: #28a745;
+            color: white;
+        }
+        .edit-btn {
+            background-color: #ffc107;
+            color: white;
+        }
+        .delete-btn {
+            background-color: #dc3545;
+            color: white;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Quản lý sản phẩm</h2>
+        <input type="text" id="productName" placeholder="Nhập tên sản phẩm">
+        <button class="add-btn" onclick="addProduct()">Thêm</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody id="productTable">
+                <!-- Danh sách sản phẩm sẽ được hiển thị tại đây -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        let products = [];
+        let editIndex = -1;
+
+        function displayProducts() {
+            const productTable = document.getElementById('productTable');
+            productTable.innerHTML = '';
+            products.forEach((product, index) => {
+                const row = `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td>${product}</td>
+                        <td>
+                            <button class="edit-btn" onclick="editProduct(${index})">Sửa</button>
+                            <button class="delete-btn" onclick="deleteProduct(${index})">Xóa</button>
+                        </td>
+                    </tr>
+                `;
+                productTable.innerHTML += row;
+            });
+        }
+
+        function addProduct() {
+            const productName = document.getElementById('productName').value.trim();
+            if (productName === '') {
+                alert('Vui lòng nhập tên sản phẩm!');
+                return;
+            }
+
+            if (editIndex === -1) {
+                // Thêm sản phẩm mới
+                products.push(productName);
+            } else {
+                // Cập nhật sản phẩm hiện tại
+                products[editIndex] = productName;
+                editIndex = -1;
+            }
+
+            document.getElementById('productName').value = '';
+            displayProducts();
+        }
+
+        function editProduct(index) {
+            document.getElementById('productName').value = products[index];
+            editIndex = index;
+        }
+
+        function deleteProduct(index) {
+            products.splice(index, 1);
+            displayProducts();
+        }
+    </script>
+</body>
+</html>

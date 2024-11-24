@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Danh sách sản phẩm và chi tiết sản phẩm</title>
+    <style>
+        /* Reset margin và padding */
+        body, h1, h2, h3, p {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Định dạng container */
+        #container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            position: relative;
+        }
+
+        /* Menu */
+        nav ul {
+            list-style: none;
+            background-color: #333;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            float: left;
+        }
+
+        nav ul li a {
+            display: block;
+            padding: 10px 20px;
+            color: white;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            background-color: #4CAF50;
+        }
+
+        /* Danh sách sản phẩm */
+        #product-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .product-item {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            width: calc(33.333% - 20px);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .product-item:hover {
+            transform: scale(1.05);
+        }
+
+        .product-item img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+
+        .product-item h3 {
+            color: #333;
+            margin: 10px 0;
+        }
+
+        .product-item p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .product-item a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 3px;
+        }
+
+        .product-item a:hover {
+            background-color: #45a049;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Nút quay lại */
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 3px;
+        }
+
+        .back-link:hover {
+            background-color: #45a049;
+        }
+
+        /* Ẩn/hiện nội dung */
+        .hidden {
+            display: none;
+        }
+
+        #content {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <!-- Header -->
+        <header>
+            <h1>Danh sách sản phẩm và chi tiết</h1>
+        </header>
+
+        <!-- Menu -->
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">Feedback</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </nav>
+
+        <!-- Nội dung -->
+        <div id="content">
+            <!-- Danh sách sản phẩm -->
+            <div id="product-list">
+                <div class="product-item">
+                    <img src="images/vietchi.jpg" alt="Sản phẩm 1">
+                    <h3>Sản phẩm 1</h3>
+                    <p>Mô tả ngắn gọn về sản phẩm 1...</p>
+                    <a href="#" onclick="showProductDetail('product1')">Xem thêm</a>
+                </div>
+                <div class="product-item">
+                    <img src="images/cuctay.jpg" alt="Sản phẩm 2">
+                    <h3>Sản phẩm 2</h3>
+                    <p>Mô tả ngắn gọn về sản phẩm 2...</p>
+                    <a href="#" onclick="showProductDetail('product2')">Xem thêm</a>
+                </div>
+                <div class="product-item">
+                    <img src="images/chuotvietchi.jpg" alt="Sản phẩm 3">
+                    <h3>Sản phẩm 3</h3>
+                    <p>Mô tả ngắn gọn về sản phẩm 3...</p>
+                    <a href="#" onclick="showProductDetail('product3')">Xem thêm</a>
+                </div>
+            </div>
+
+            <!-- Chi tiết sản phẩm -->
+            <div id="product-detail" class="hidden">
+                <img id="detail-img" src="" alt="" style="width: 100%; max-width: 300px;">
+                <h3 id="detail-title"></h3>
+                <p id="detail-desc"></p>
+                <p><strong>Giá:</strong> <span id="detail-price"></span> VNĐ</p>
+                <a href="#" class="back-link" onclick="showProductList()">Quay lại danh sách sản phẩm</a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>Bản quyền thuộc về LCTSeng&reg;.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Dữ liệu sản phẩm
+        const products = {
+            product1: {
+                img: 'images/vietchi.jpg',
+                title: 'Sản phẩm 1',
+                desc: 'Mô tả đầy đủ và chi tiết về sản phẩm 1...',
+                price: '1.000.000'
+            },
+            product2: {
+                img: 'images/cuctay.jpg',
+                title: 'Sản phẩm 2',
+                desc: 'Mô tả đầy đủ và chi tiết về sản phẩm 2...',
+                price: '2.000.000'
+            },
+            product3: {
+                img: 'images/chuotvietchi.jpg',
+                title: 'Sản phẩm 3',
+                desc: 'Mô tả đầy đủ và chi tiết về sản phẩm 3...',
+                price: '3.000.000'
+            }
+        };
+
+        // Hiển thị chi tiết sản phẩm
+        function showProductDetail(productId) {
+            const product = products[productId];
+            document.getElementById('detail-img').src = product.img;
+            document.getElementById('detail-title').innerText = product.title;
+            document.getElementById('detail-desc').innerText = product.desc;
+            document.getElementById('detail-price').innerText = product.price;
+
+            document.getElementById('product-list').classList.add('hidden');
+            document.getElementById('product-detail').classList.remove('hidden');
+        }
+
+        // Quay lại danh sách sản phẩm
+        function showProductList() {
+            document.getElementById('product-detail').classList.add('hidden');
+            document.getElementById('product-list').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tính Lãi Suất Ngân Hàng</title>
+</head>
+<body>
+  <h1>Tính Lãi Suất Ngân Hàng</h1>
+
+  <label>Số tiền gốc (triệu đồng):</label>
+  <input type="number" id="principal" placeholder="Nhập số tiền gốc">
+
+  <label>Lãi suất (%/năm):</label>
+  <input type="number" id="rate" placeholder="Nhập lãi suất (VD: 8)">
+
+  <label>Số năm:</label>
+  <input type="number" id="years" placeholder="Nhập số năm">
+
+  <button onclick="calculate()">Tính Lãi Suất</button>
+
+  <h2>Kết quả:</h2>
+  <p id="result"></p>
+
+  <script>
+    function calculate() {
+      // Lấy giá trị từ các input
+      const principal = parseFloat(document.getElementById('principal').value);
+      const rate = parseFloat(document.getElementById('rate').value);
+      const years = parseInt(document.getElementById('years').value);
+
+      // Kiểm tra giá trị hợp lệ
+      if (!principal || !rate || !years || principal <= 0 || rate <= 0 || years <= 0) {
+        document.getElementById('result').innerText = 'Vui lòng nhập giá trị hợp lệ!';
+        return;
+      }
+
+      // Tính toán tổng số tiền phải trả
+      const totalAmount = Math.round(principal + (principal * rate * years) / 100);
+
+      // Hiển thị kết quả
+      document.getElementById('result').innerText = 
+        `Số tiền phải trả sau ${years} năm: ${totalAmount} triệu đồng`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!-- saved from url=(0096)file:///D:/Visual%20Code/html/danh%20sach%20bai%20tap/baitapchuong2/bai2.2/images/box_model.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Design</title>
+  <style>
+    /* Tổng quát cho danh sách sản phẩm */
+    .product-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    /* Cấu trúc từng sản phẩm */
+    .hh-box {
+      width: 200px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #fff;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Hình ảnh sản phẩm */
+    .hh-box-image {
+      position: relative;
+      width: 100%;
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hh-box-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Tên sản phẩm */
+    .hh-box-name {
+      text-align: center;
+      font-size: 16px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    /* Giá sản phẩm */
+    .hh-box-price {
+      text-align: center;
+      font-size: 18px;
+      color: green;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    /* Icon "NEW" */
+    .hh-box-icon {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 2;
+    }
+
+    .hh-box-icon img {
+      width: 50px;
+      height: auto;
+    }
+
+    /* Hành động trong ảnh */
+    .hh-box-actions {
+        position: relative;
+        bottom: 80px; /* Đẩy sát mép dưới */
+        left: 165px;  /* Đẩy sát mép phải */
+        z-index: 3;
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+}
+    .hh-box-actions button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .hh-box-actions img {
+      width: 24px;
+      height: 24px;
+      display: block;
+    }
+
+    .hh-box-actions button:hover img {
+      filter: brightness(1.2);
+    }
+  </style>
+</head>
+<body>
+  <div class="product-list">
+    <!-- Sản phẩm 1 -->
+    <div class="hh-box">
+      <div class="hh-box-image">
+        <img src="./Product Design_files/product.png" alt="Nikon D3100">
+        <div class="hh-box-icon">
+          <img src="./Product Design_files/new-icon.png" alt="New">
+        </div>
+      </div>
+      <div class="hh-box-name">Nikon D3100</div>
+      <div class="hh-box-price">$99.99</div>     
+        <div class="hh-box-actions">
+            <button><img src="./Product Design_files/Favourites.png" alt="Favorite"></button>
+            <button><img src="./Product Design_files/Letter.png" alt="Mail"></button>
+            <button><img src="./Product Design_files/Basket.png" alt="Add to Cart"></button>
+        </div>
+    </div>
+  </div>
+
+
+</body></html>

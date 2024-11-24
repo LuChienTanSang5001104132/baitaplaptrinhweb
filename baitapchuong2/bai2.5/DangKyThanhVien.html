@@ -1,0 +1,128 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Ký Thành Viên</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        /* CSS cho bảng */
+        #form1 table {
+            width: 500px;
+            border: 5px groove #000000;
+            background-color: #c8d8f5;
+            color: #003399;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        caption {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            vertical-align: middle;
+        }
+
+        /* CSS cho các ô nhập */
+        input[type="text"], input[type="password"], input[type="file"], select, textarea {
+            width: 100%;
+            padding: 6px;
+            margin: 4px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="radio"], input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .mytextbox {
+            color: #99FF33;
+            background-color: #006699;
+            border: 1px solid #996633;
+            width: 300px;
+        }
+
+        .center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <form action="" method="POST" id="form1">
+        <table>
+            <caption>ĐĂNG KÝ THÀNH VIÊN CLB YÊU NHẠC</caption>
+            <tr>
+                <td>Họ Tên</td>
+                <td><input type="text" id="txtHoTen" name="hoTen" class="mytextbox" required></td>
+            </tr>
+            <tr>
+                <td>Tên đăng nhập</td>
+                <td><input type="text" id="txtUserName" name="userName" class="mytextbox" required></td>
+            </tr>
+            <tr>
+                <td>Mật khẩu</td>
+                <td><input type="password" id="txtPass" name="password" class="mytextbox" required></td>
+            </tr>
+            <tr>
+                <td>Gõ lại mật khẩu</td>
+                <td><input type="password" id="txtRepass" name="repassword" class="mytextbox" required></td>
+            </tr>
+            <tr>
+                <td>Giới tính</td>
+                <td>
+                    <input type="radio" id="rdNam" name="rdGioiTinh" value="0" checked> Nam
+                    <input type="radio" id="rdNu" name="rdGioiTinh" value="1"> Nữ
+                </td>
+            </tr>
+            <tr>
+                <td>Ngoại ngữ</td>
+                <td>
+                    <input type="checkbox" id="chkAnh" name="ngoaiNgu[]" value="Anh"> Anh văn
+                    <input type="checkbox" id="chkPhap" name="ngoaiNgu[]" value="Phap"> Pháp văn
+                    <input type="checkbox" id="chkHoa" name="ngoaiNgu[]" value="Hoa"> Hoa văn
+                </td>
+            </tr>
+            <tr>
+                <td>Nghề nghiệp</td>
+                <td>
+                    <select id="cboNgheNghiep" name="ngheNghiep" class="mytextbox">
+                        <option value="0">Bạn làm nghề gì</option>
+                        <option value="1">Học sinh - Sinh viên</option>
+                        <option value="2">Giáo viên</option>
+                        <option value="3">Nhân viên</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Hình</td>
+                <td><input type="file" id="fHinh" name="hinh" class="mytextbox"></td>
+            </tr>
+            <tr>
+                <td>Sở thích</td>
+                <td><textarea id="txtSoThich" name="soThich" class="mytextbox" rows="4" required></textarea></td>
+            </tr>
+            <tr class="center">
+                <td colspan="2">
+                    <input type="submit" id="btnDangKy" value="Đăng ký">
+                    <input type="reset" id="btnXoa" value="Làm lại">
+                    <input type="hidden" name="NgayDangKy" value="03/23/2023">
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+</body>
+</html>

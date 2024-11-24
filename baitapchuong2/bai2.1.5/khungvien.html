@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rectangles</title>
+    <style>
+        /* Outside div styles */
+        .outside-div {
+            border: 3px dotted blue;
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Middle div styles - viền mỏng */
+        .middle-div {
+            border: 1px dashed red; /* Giảm độ dày của viền */
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Inner div styles */
+        .inner-div {
+            border: 3px solid green;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="outside-div">
+        <div class="middle-div">
+            <div class="inner-div">
+                I am heavily packed &lt;DIV&gt;
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tra cứu giá hoa quả</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: white;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+            font-size: 16px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 10px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Tra cứu giá hoa quả</h2>
+        <input type="text" id="ten_hoa_qua" placeholder="Nhập tên hoa quả...">
+        <button onclick="traCuuGia()">Xem giá</button>
+        <div class="result" id="ket_qua"></div>
+    </div>
+
+    <script>
+        function traCuuGia() {
+    // Lấy giá trị từ ô input, loại bỏ khoảng trắng và chuẩn hóa chữ thường
+    const tenHoaQua = document.getElementById("ten_hoa_qua").value.trim().toLowerCase();
+
+    // Hàm chuẩn hóa Unicode (NFC)
+    function normalizeUnicode(str) {
+        return str.normalize("NFC");
+    }
+
+    // Chuẩn hóa chuỗi nhập và chuỗi so sánh
+    const tenHoaQuaNormalized = normalizeUnicode(tenHoaQua);
+    const ketQua = document.getElementById("ket_qua");
+
+    // Dữ liệu giá hoa quả
+    const bangGia = {
+        "ổi": "20000 VNĐ/kg",
+        "dưa hấu": "20000 VNĐ/kg",
+        "táo": "30000 VNĐ/kg",
+        "cam": "40000 VNĐ/kg",
+        "chôm chôm": "40000 VNĐ/kg",
+        "măng cụt": "50000 VNĐ/kg"
+    };
+
+    // Chuẩn hóa tất cả khóa trong bảng giá
+    const bangGiaNormalized = {};
+    for (let key in bangGia) {
+        bangGiaNormalized[normalizeUnicode(key)] = bangGia[key];
+    }
+
+    // Kiểm tra giá trị trong danh sách
+    if (bangGiaNormalized[tenHoaQuaNormalized]) {
+        ketQua.textContent = `Giá của "${tenHoaQua}": ${bangGiaNormalized[tenHoaQuaNormalized]}`;
+        ketQua.style.color = "green";
+    } else {
+        ketQua.textContent = "Không tìm thấy loại hoa quả này!";
+        ketQua.style.color = "red";
+    }
+}
+
+    </script>
+</body>
+</html>

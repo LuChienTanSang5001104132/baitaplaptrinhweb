@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Kiểm Tra Năm Nhuận</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+
+    input {
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      color: white;
+      background-color: #007bff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>Kiểm Tra Năm Nhuận</h1>
+  <p>Nhập một năm để kiểm tra:</p>
+  <input type="number" id="year" placeholder="Nhập năm" />
+  <button onclick="checkLeapYear()">Kiểm tra</button>
+  <div id="result"></div>
+
+  <script>
+    function checkLeapYear() {
+      const year = parseInt(document.getElementById('year').value);
+      const resultDiv = document.getElementById('result');
+
+      // Kiểm tra giá trị hợp lệ
+      if (!year || year <= 0) {
+        resultDiv.innerText = 'Vui lòng nhập một năm hợp lệ!';
+        resultDiv.style.color = 'red';
+        return;
+      }
+
+      // Kiểm tra năm nhuận
+      const isLeapYear = (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+
+      // Hiển thị kết quả
+      if (isLeapYear) {
+        resultDiv.innerText = `${year} là năm nhuận.`;
+        resultDiv.style.color = 'green';
+      } else {
+        resultDiv.innerText = `${year} không phải là năm nhuận.`;
+        resultDiv.style.color = 'orange';
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        span {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+
+        input[type="text"], input[type="email"], select {
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Contact Us</h1>
+    <form>
+        <label for="firstname"><span>First name:</span></label>
+        <input type="text" id="firstname" name="firstname" required><br>
+
+        <label for="lastname"><span>Last name:</span></label>
+        <input type="text" id="lastname" name="lastname" required><br>
+
+        <label for="email"><span>Email:</span></label>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="town"><span>Town:</span></label>
+        <select id="town" name="town">
+            <option value="1">Sofia</option>
+            <option value="2">Ohio</option>
+            <option value="3">Alaba</option>
+        </select><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+</body>
+</html>

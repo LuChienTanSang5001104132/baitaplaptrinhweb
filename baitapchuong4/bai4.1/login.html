@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Đăng Nhập</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+
+        .login-title {
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 10px;
+        }
+
+        td.label {
+            text-align: right;
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 95%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        #message {
+            text-align: center;
+            font-size: 14px;
+            margin-top: 10px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-title">Mời bạn đăng nhập</div>
+        <form id="loginForm">
+            <table>
+                <tr>
+                    <td class="label">Username:</td>
+                    <td>
+                        <input type="text" id="username" placeholder="Nhập username" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">Password:</td>
+                    <td>
+                        <input type="password" id="password" placeholder="Nhập password" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center;">
+                        <button type="submit" id="submitBtn">Login</button>
+                    </td>
+                </tr>
+            </table>
+            <div id="message"></div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Ngăn chặn form gửi đi
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const message = document.getElementById('message');
+            const submitBtn = document.getElementById('submitBtn');
+
+            if (username === 'admin' && password === '12345') {
+                // Thay đổi thông báo
+                message.style.color = 'green';
+                message.textContent = 'Đăng nhập thành công!';
+                
+                // Thay đổi nút từ Login thành Logout
+                submitBtn.textContent = 'Logout';
+                submitBtn.style.backgroundColor = '#dc3545'; // Đổi màu nút thành đỏ
+
+                // Thay đổi hành động khi bấm nút Logout
+                submitBtn.addEventListener('click', function() {
+                    message.textContent = ''; // Xóa thông báo
+                    document.getElementById('username').value = ''; // Xóa username
+                    document.getElementById('password').value = ''; // Xóa password
+                    submitBtn.textContent = 'Login'; // Đổi lại nút thành Login
+                    submitBtn.style.backgroundColor = '#28a745'; // Đổi màu nút thành xanh
+                }, { once: true });
+            } else {
+                // Thông báo nếu đăng nhập sai
+                message.style.color = 'red';
+                message.textContent = 'Sai username hoặc password!';
+            }
+        });
+    </script>
+</body>
+</html>

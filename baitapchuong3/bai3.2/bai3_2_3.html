@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính số ngày trong tháng</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+            font-size: 16px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .result {
+            margin-top: 10px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Tính số ngày trong tháng</h2>
+        <input type="number" id="so_thang" placeholder="Nhập số tháng (1-12)" min="1" max="12">
+        <button onclick="tinhSoNgay()">Tính số ngày</button>
+        <div class="result" id="ket_qua"></div>
+    </div>
+
+    <script>
+        function tinhSoNgay() {
+            const soThang = parseInt(document.getElementById("so_thang").value);
+            const ketQua = document.getElementById("ket_qua");
+
+            if (isNaN(soThang) || soThang < 1 || soThang > 12) {
+                ketQua.textContent = "Vui lòng nhập một số tháng hợp lệ từ 1 đến 12.";
+                ketQua.style.color = "red";
+                return;
+            }
+
+            let soNgay;
+
+            switch (soThang) {
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                case 10:
+                case 12:
+                    soNgay = 31;
+                    break;
+                case 4:
+                case 6:
+                case 9:
+                case 11:
+                    soNgay = 30;
+                    break;
+                case 2:
+                    soNgay = "28 hoặc 29";
+                    break;
+                default:
+                    soNgay = "Không xác định";
+            }
+
+            ketQua.textContent = `Tháng ${soThang} có ${soNgay} ngày.`;
+            ketQua.style.color = "green";
+        }
+    </script>
+</body>
+</html>

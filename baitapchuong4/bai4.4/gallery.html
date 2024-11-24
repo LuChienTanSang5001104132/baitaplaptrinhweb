@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery Slideshow</title>
+    <style>
+        h1, .slideshow, .button {
+            text-align: center;
+        }
+        img {
+            width: 180px;
+            height: 150px;
+        }
+        body {
+            margin: 0px auto;
+            width: 1000px;
+        }
+        .slideshow_inner {
+            margin-left: 10px;
+            width: 1000px;
+        }
+        .slideshow {
+            width: 1000px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color:#00f;">GALLERY</h1>
+    <section>
+        <div class="slideshow">
+            <div class="slideshow_inner">
+                <a href="images/big/porsche718_1.jpg"><img src="images/small/porsche718_1.jpg" alt="Image 1"></a>
+                <a href="images/big/porsche718_2.jpg"><img src="images/small/porsche718_2.jpg" alt="Image 2"></a>
+                <a href="images/big/porsche718_3.jpg"><img src="images/small/porsche718_3.jpg" alt="Image 3"></a>
+                <a href="images/big/porsche718_4.jpg"><img src="images/small/porsche718_4.jpg" alt="Image 4"></a>
+                <a href="images/big/porsche718_5.jpg"><img src="images/small/porsche718_5.jpg" alt="Image 5"></a>
+            </div>
+        </div>
+        <div class="button">
+            <input type="button" id="btnLeft" name="btnLeft" value="<<">
+            <input type="button" id="btnRight" name="btnRight" value=">>">
+        </div>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        var t = 10;
+        $(document).ready(function () {
+            $("#btnLeft").click(function (e) {
+                $(".slideshow_inner").animate({
+                    marginLeft: "+=250"
+                }, 500);
+            });
+            $("#btnRight").click(function (e) {
+                $(".slideshow_inner").animate({
+                    marginLeft: "-=250"
+                }, 500);
+            });
+        });
+    </script>
+</body>
+</html>

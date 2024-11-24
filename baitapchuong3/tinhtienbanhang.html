@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ứng dụng Tính tiền bán hàng</title>
+    <style>
+        body {
+            background-color: #c8e5ff; /* Màu nền (AliceBlue) */
+            color: #333; /* Màu chữ mặc định */
+            font-family: Arial, sans-serif; /* Font chữ */
+            margin: 0;
+            padding: 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            text-align: center;
+            padding: 10px;
+        }
+        .total {
+            font-weight: bold;
+        }
+        .center {
+            text-align: center;
+        }
+        .control-row td {
+            text-align: left;
+        }
+        table {
+        width: 100%;
+        border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid rgb(0, 0, 0);
+        }
+        th, td {
+            text-align: center;
+            padding: 10px;
+        }
+        .total {
+            font-weight: bold;
+        }
+        .center {
+            text-align: center;
+        }
+        .control-row td {
+            text-align: left;
+        }
+
+        /* Tô màu hàng đầu tiên */
+        thead tr {
+            background-color: #8bd2a7;
+        }
+
+        /* Tô màu cột 1 và cột 2 */
+        td:first-child, th:first-child, 
+        td:nth-child(0), th:nth-child(0), tfoot td:nth-child(1) {
+            background-color: #8bd2a7;
+        }
+        td:nth-child(2), th:nth-child(1) {
+            background-color: #8bd2a7;
+        }
+        td:nth-child(6), th:nth-child(7), tfoot td:nth-child(5){
+                background-color: #8bd2a7;
+        }
+        tfoot td[colspan="1"]{
+            background-color: #c8e5ff;
+        }
+        tfoot td:last-child {
+        background-color: #8bd2a7; /* Màu vàng kim */
+        color: black; /* Màu chữ đen */
+        font-weight: bold; /* Chữ in đậm */
+        text-align: center; /* Căn giữa nội dung */
+    }
+</style>
+    </style>
+</head>
+<body>
+    <h1 class="center">Ứng dụng Tính tiền bán hàng</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Tên hàng hóa</th>
+                <th>Số lượng có</th>
+                <th>Số lượng mua</th>
+                <th>Đơn giá</th>
+                <th>Chọn mua</th>
+            </tr>
+        </thead>
+        <tbody id="productTable">
+            <tr>
+                <td>1</td>
+                <td>CPU</td>
+                <td><input type="number" id="stock1" min="0" value="14" readonly></td>
+                <td><input type="number" id="quantity1" min="1" disabled placeholder="0"></td>
+                <td><input type="text" id="price1" value="120$" readonly></td>
+                <td><input type="checkbox" id="check1" onclick="toggleQuantity(1)"></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>RAM</td>
+                <td><input type="number" id="stock2" min="0" value="14" readonly></td>
+                <td><input type="number" id="quantity2" min="1" disabled placeholder="0"></td>
+                <td><input type="text" id="price2" value="10$" readonly></td>
+                <td><input type="checkbox" id="check2" onclick="toggleQuantity(2)"></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>HDD</td>
+                <td><input type="number" id="stock3" min="0" value="12" readonly></td>
+                <td><input type="number" id="quantity3" min="1" disabled placeholder="0"></td>
+                <td><input type="text" id="price3" value="29$" readonly></td>
+                <td><input type="checkbox" id="check3" onclick="toggleQuantity(3)"></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>ROM</td>
+                <td><input type="number" id="stock4" min="0" value="23" readonly></td>
+                <td><input type="number" id="quantity4" min="1" disabled placeholder="0"></td>
+                <td><input type="text" id="price4" value="130$" readonly></td>
+                <td><input type="checkbox" id="check4" onclick="toggleQuantity(4)"></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr class="control-row">
+                 <td colspan="2"></td>
+                 <td colspan="1" class="no-bg">
+                    <button onclick="calculateTotal()">OK</button>
+                </td>
+                <td colspan="2" class="total">
+                    Tổng cộng: <span id="totalAmount">0</span>
+                </td>
+                <td colspan="1">
+                    <label>
+                        <input type="checkbox" id="vatCheckbox"> VAT (10%)
+                    </label>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+    <br>
+    <div class="center">
+        <button onclick="resetForm()">Nhập lại</button>
+    </div>
+
+    <script>
+        function toggleQuantity(index) {
+            const quantityInput = document.getElementById(`quantity${index}`);
+            quantityInput.disabled = !quantityInput.disabled;
+            if (quantityInput.disabled) quantityInput.value = '';
+        }
+
+        function calculateTotal() {
+    const rows = document.querySelectorAll('#productTable tr');
+    let total = 0;
+
+    rows.forEach((row, index) => {
+        const checkbox = row.querySelector('input[type="checkbox"]');
+        if (checkbox.checked) {
+            const quantityInput = document.getElementById(`quantity${index + 1}`);
+            const priceInput = document.getElementById(`price${index + 1}`);
+
+            const quantity = parseInt(quantityInput.value || 0);
+            const price = parseFloat(priceInput.value.replace('$', '') || 0); // Loại bỏ ký hiệu $
+
+            total += quantity * price;
+        }
+    });
+
+    const vatCheckbox = document.getElementById('vatCheckbox');
+    if (vatCheckbox.checked) {
+        total += total * 0.1; // Thêm VAT 10%
+    }
+
+    document.getElementById('totalAmount').textContent = total.toLocaleString();
+}
+
+        function resetForm() {
+            const rows = document.querySelectorAll('#productTable tr');
+            rows.forEach((row, index) => {
+                const checkbox = row.querySelector('input[type="checkbox"]');
+                const quantityInput = document.getElementById(`quantity${index + 1}`);
+                checkbox.checked = false;
+                quantityInput.disabled = true;
+                quantityInput.value = '';
+            });
+            document.getElementById('vatCheckbox').checked = false;
+            document.getElementById('totalAmount').textContent = '0';
+        }
+        function formatCurrency(index) {
+    const priceInput = document.getElementById(`price${index}`);
+    let value = priceInput.value.replace(/[^0-9]/g, ""); // Loại bỏ ký tự không phải số
+
+    if (value) {
+        priceInput.value = `${value}$`; // Thêm ký hiệu $
+    } else {
+        priceInput.value = ""; // Nếu không có giá trị, để trống
+    }
+}
+    </script>
+</body>
+</html>
